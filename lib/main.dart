@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_home/ui/screens/about.dart';
 import 'package:smart_home/ui/screens/awal.dart';
 
-void main() => runApp(SmartHome());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
