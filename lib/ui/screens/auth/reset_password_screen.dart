@@ -2,12 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
 
-class ResetPassword extends StatefulWidget {
+class ResetPasswordScreen extends StatefulWidget {
   @override
-  _ResetPasswordState createState() => _ResetPasswordState();
+  _ResetPasswordScreenState createState() => _ResetPasswordScreenState();
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;

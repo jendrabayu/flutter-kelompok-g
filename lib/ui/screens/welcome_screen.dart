@@ -1,15 +1,15 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/screens/auth/login.dart';
-import 'package:smart_home/ui/screens/auth/register.dart';
+import 'package:smart_home/ui/screens/auth/login_screen.dart';
+import 'package:smart_home/ui/screens/auth/register_screen.dart';
 
-class Welcome extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
-  _WelcomeState createState() => _WelcomeState();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeState extends State<Welcome> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -66,7 +66,7 @@ class _WelcomeState extends State<Welcome> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Login()),
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
                   },
                   child: Text(
@@ -102,7 +102,7 @@ class _WelcomeState extends State<Welcome> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Register()),
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
                   );
                 },
                 child: Text(

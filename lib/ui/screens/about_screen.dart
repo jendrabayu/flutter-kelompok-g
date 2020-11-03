@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
 import 'package:smart_home/ui/widgets/AboutCard.dart';
 
-class SmartHome extends StatelessWidget {
+class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smart Home',
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: AboutScreen(),
+      home: _AboutScreenState(),
     );
   }
 }
 
-class AboutScreen extends StatelessWidget {
+class _AboutScreenState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size =

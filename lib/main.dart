@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/welcome.dart';
+import 'package:smart_home/ui/screens/welcome_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Smart Home',
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: Welcome(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,14 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/screens/auth/login.dart';
+import 'package:smart_home/ui/screens/auth/login_screen.dart';
 
-class RegisterSuccess extends StatefulWidget {
+class ResetPasswordSuccessScreen extends StatefulWidget {
   @override
-  _RegisterSuccessState createState() => _RegisterSuccessState();
+  _ResetPasswordSuccessScreenState createState() =>
+      _ResetPasswordSuccessScreenState();
 }
 
-class _RegisterSuccessState extends State<RegisterSuccess> {
+class _ResetPasswordSuccessScreenState
+    extends State<ResetPasswordSuccessScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -30,7 +32,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Selamat!',
+                  Text('Link Berhasil',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -43,7 +45,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Anda berhasil',
+                  Text('Terkirim ke email',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -56,7 +58,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('membuat akun.',
+                  Text('anda silahkan',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -69,7 +71,7 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Silahkan Login',
+                  Text('reset password',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -91,11 +93,11 @@ class _RegisterSuccessState extends State<RegisterSuccess> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Login()),
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
                   },
                   child: Text(
-                    'Login >',
+                    '< Login',
                     style: TextStyle(
                         color: kBackroundColor,
                         fontSize: 20,

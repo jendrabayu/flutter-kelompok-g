@@ -1,14 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/screens/auth/register_success.dart';
 
-class Register extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _RegisterState extends State<Register> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -22,14 +21,14 @@ class _RegisterState extends State<Register> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 150),
+              padding: EdgeInsets.only(top: 80),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Daftar akun',
+                  Text('LoginScreen',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -47,36 +46,6 @@ class _RegisterState extends State<Register> {
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 50),
-                  ),
-                  Flexible(
-                    child: TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Nama',
-                        labelStyle: TextStyle(color: Colors.white),
-                        hintText: 'Dummy Name',
-                        hintStyle: TextStyle(color: Colors.white),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 50),
-                  ),
                 ],
               ),
             ),
@@ -141,63 +110,61 @@ class _RegisterState extends State<Register> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 50),
-                  ),
-                  Flexible(
-                    child: TextField(
-                      obscureText: true,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Konfirmasi Password',
-                        labelStyle: TextStyle(color: Colors.white),
-                        hintText: 'Enter your password',
-                        hintStyle: TextStyle(color: Colors.white),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 50),
-                  ),
-                ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+              width: screenSize.width,
+              child: Text(
+                'Lupa password?',
+                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.right,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: EdgeInsets.only(top: 10),
             ),
             Container(
-              width: screenSize.width * 0.6,
+              width: screenSize.width * 0.4,
               height: screenSize.width * 0.12,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: FlatButton(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   color: Colors.white,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterSuccess()),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
-                    'Buat Akun >',
+                    'Login',
                     style: TextStyle(
                         color: kBackroundColor,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Belum Punya aku?',
+                      style: TextStyle(color: Colors.white, fontSize: 15)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(' Buat akun>',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold)),
+                ],
               ),
             ),
           ],
