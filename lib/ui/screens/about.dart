@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/constants/constant.dart';
 import 'package:smart_home/ui/widgets/AboutCard.dart';
 
 class SmartHome extends StatelessWidget {
@@ -24,7 +25,7 @@ class AboutScreen extends StatelessWidget {
           Container(
             height: size.height * .35,
             decoration: BoxDecoration(
-              color: Color(0xffFFCC24),
+              color: kBackroundColor,
             ),
           ),
           SafeArea(
@@ -38,7 +39,7 @@ class AboutScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Image(image: AssetImage('assets/images/SGDS7ICON 1.png')),
+                      Image(image: kLogo),
                       SizedBox(
                         width: 10,
                       ),

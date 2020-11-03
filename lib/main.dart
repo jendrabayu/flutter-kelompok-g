@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/about.dart';
-import 'package:smart_home/ui/screens/awal.dart';
+import 'package:smart_home/ui/screens/welcome.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AwalPage(),
+      title: 'Smart Home',
+      theme: ThemeData(fontFamily: 'Poppins'),
+      home: Welcome(),
     );
   }
 }
