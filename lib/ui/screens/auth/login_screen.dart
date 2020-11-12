@@ -1,6 +1,7 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:smart_home/ui/constants/constant.dart';
+import 'package:smart_home/ui/widgets/AuthButton.dart';
+import 'package:smart_home/ui/widgets/AuthTextField.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,164 +13,100 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-          child: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/bg.PNG'), fit: BoxFit.cover)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 80),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(color: kBackroundColor),
+          ),
+          SingleChildScrollView(
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text('LoginScreen',
+                  SizedBox(height: 80),
+                  Container(
+                    width: 125,
+                    height: 125,
+                    child: Image(
+                      fit: BoxFit.cover,
+                      image: kLogo,
+                    ),
+                  ),
+                  SizedBox(height: 50),
+                  Text('Login \n Smarthome',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Smarthome',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 50),
-                  ),
-                  Flexible(
-                    child: TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: TextStyle(color: Colors.white),
-                        hintText: 'your username@gmail.com',
-                        hintStyle: TextStyle(color: Colors.white),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                      ),
+                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    child: Column(
+                      children: <Widget>[
+                        AuthTextField(
+                          txtLabel: 'Email',
+                          txtHint: 'your username@gmail.com',
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        AuthTextField(
+                          obscureTextStatus: true,
+                          txtLabel: 'Password',
+                          txtHint: 'Enter your password',
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              'Lupa password?',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: screenSize.width * 0.4,
+                          height: screenSize.width * 0.12,
+                          child: AuthButton(
+                            btnTitle: 'Login',
+                            press: () {},
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('Belum Punya aku?',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15)),
+                                Text(' Buat akun>',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 50),
-                  ),
+                  )
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 50),
-                  ),
-                  Flexible(
-                    child: TextField(
-                      obscureText: true,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        labelStyle: TextStyle(color: Colors.white),
-                        hintText: 'Enter your password',
-                        hintStyle: TextStyle(color: Colors.white),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 50),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-              width: screenSize.width,
-              child: Text(
-                'Lupa password?',
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.right,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              width: screenSize.width * 0.4,
-              height: screenSize.width * 0.12,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: FlatButton(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  color: Colors.white,
-                  onPressed: () {},
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                        color: kBackroundColor,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Belum Punya aku?',
-                      style: TextStyle(color: Colors.white, fontSize: 15)),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(' Buat akun>',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      )),
+          ),
+        ],
+      ),
     );
   }
 }
