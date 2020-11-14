@@ -57,14 +57,19 @@ class _BodyState extends State<Body> {
                       SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            'Lupa password?',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/password-reset');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              'Lupa password?',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -74,7 +79,9 @@ class _BodyState extends State<Body> {
                         height: SizeConfig.screenWidth * 0.12,
                         child: ButtonAuth(
                           btnTitle: 'Login',
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed('/about');
+                          },
                         ),
                       ),
                       SizedBox(
@@ -88,11 +95,16 @@ class _BodyState extends State<Body> {
                               Text('Belum Punya aku?',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 15)),
-                              Text(' Buat akun>',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold)),
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed('/register');
+                                },
+                                child: Text(' Buat akun>',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold)),
+                              ),
                             ],
                           ),
                         ],
