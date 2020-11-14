@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AuthTextField extends StatelessWidget {
+class TextFieldAuth extends StatelessWidget {
   final String txtLabel;
   final String txtHint;
   final Function onChanged;
@@ -9,7 +9,7 @@ class AuthTextField extends StatelessWidget {
   final Function onSubmitted;
   final bool obscureTextStatus;
 
-  const AuthTextField(
+  const TextFieldAuth(
       {Key key,
       this.txtLabel,
       this.txtHint,

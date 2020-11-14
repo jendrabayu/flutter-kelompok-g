@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/constans.dart';
 
-class AuthButton extends StatelessWidget {
+class ButtonAuth extends StatelessWidget {
   final String btnTitle;
   final Function press;
 
-  const AuthButton({Key key, this.btnTitle, this.press}) : super(key: key);
+  const ButtonAuth({Key key, this.btnTitle, this.press}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

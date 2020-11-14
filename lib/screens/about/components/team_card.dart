@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AboutCard extends StatelessWidget {
+class TeamCard extends StatelessWidget {
   final String photoSrc;
   final String nama;
   final String nim;
 
-  AboutCard({Key key, this.photoSrc, this.nama, this.nim}) : super(key: key);
+  TeamCard({Key key, this.photoSrc, this.nama, this.nim}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

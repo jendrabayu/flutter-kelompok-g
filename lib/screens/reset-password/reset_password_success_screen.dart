@@ -1,27 +1,33 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/constans.dart';
 import 'package:smart_home/screens/auth/login/login_screen.dart';
 
-class RegisterSuccessScreen extends StatefulWidget {
+class ResetPasswordSuccessScreen extends StatefulWidget {
   @override
-  _RegisterSuccessScreenState createState() => _RegisterSuccessScreenState();
+  _ResetPasswordSuccessScreenState createState() =>
+      _ResetPasswordSuccessScreenState();
 }
 
-class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
+class _ResetPasswordSuccessScreenState
+    extends State<ResetPasswordSuccessScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/bgakhir.PNG'),
-                fit: BoxFit.cover)),
+        color: Colors.amber,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Image.asset(
+                'assets/images/SGDS7ICON.png',
+                height: 120.0,
+                width: 120.0,
+              ),
+            ),
             Padding(
               padding: EdgeInsets.only(top: 50),
             ),
@@ -30,7 +36,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Selamat!',
+                  Text('Link Berhasil',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -43,7 +49,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Anda berhasil',
+                  Text('Terkirim ke email',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -56,7 +62,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('membuat akun.',
+                  Text('anda silahkan',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -69,7 +75,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Silahkan Login',
+                  Text('reset password',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -78,7 +84,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.only(top: 50),
             ),
             Container(
               width: screenSize.width * 0.4,
@@ -95,14 +101,17 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
                     );
                   },
                   child: Text(
-                    'Login >',
+                    '< Login',
                     style: TextStyle(
-                        color: kBgColorPrimary,
+                        color: Color(0xFFFBC02D),
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 50),
             ),
           ],
         ),

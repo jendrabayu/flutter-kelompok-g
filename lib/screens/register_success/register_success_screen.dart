@@ -1,38 +1,38 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/constans.dart';
 import 'package:smart_home/screens/auth/login/login_screen.dart';
 
-class ResetPasswordSuccessScreen extends StatefulWidget {
+class RegisterSuccessScreen extends StatefulWidget {
+  static String routeName = '/register-success';
   @override
-  _ResetPasswordSuccessScreenState createState() =>
-      _ResetPasswordSuccessScreenState();
+  _RegisterSuccessScreenState createState() => _RegisterSuccessScreenState();
 }
 
-class _ResetPasswordSuccessScreenState
-    extends State<ResetPasswordSuccessScreen> {
+class _RegisterSuccessScreenState extends State<RegisterSuccessScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/bgakhir.PNG'),
-                fit: BoxFit.cover)),
+        color: Colors.amber,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.all(5.0),
+              child: Image.asset(
+                'assets/images/SGDS7ICON.png',
+                height: 120.0,
+                width: 120.0,
+              ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 5),
+              padding: EdgeInsets.only(top: 30.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Link Berhasil',
+                  Text('Selamat!',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -45,7 +45,7 @@ class _ResetPasswordSuccessScreenState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Terkirim ke email',
+                  Text('Anda berhasil',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -58,7 +58,7 @@ class _ResetPasswordSuccessScreenState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('anda silahkan',
+                  Text('membuat akun.',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -71,7 +71,7 @@ class _ResetPasswordSuccessScreenState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('reset password',
+                  Text('Silahkan Login',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -91,15 +91,12 @@ class _ResetPasswordSuccessScreenState
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
+                    Navigator.of(context).pushNamed('/login');
                   },
                   child: Text(
-                    '< Login',
+                    'Login >',
                     style: TextStyle(
-                        color: kBgColorPrimary,
+                        color: Color(0xFFFBC02D),
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),

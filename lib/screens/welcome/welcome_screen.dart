@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/constans.dart';
 import 'package:smart_home/screens/auth/login/login_screen.dart';
 import 'package:smart_home/screens/auth/register/register_screen.dart';
 
@@ -17,15 +16,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: SafeArea(
           child: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/bgawal.PNG'),
-                fit: BoxFit.cover)),
+        color: Colors.amber,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 150),
+              padding: EdgeInsets.all(5.0),
+              child: Image.asset(
+                'assets/images/SGDS7ICON.png',
+                height: 190.0,
+                width: 190.0,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 30),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
@@ -53,8 +57,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ],
               ),
             ),
+            Image.asset(
+              'assets/images/substract.png',
+              height: 40.0,
+              width: 500.0,
+            ),
             Padding(
-              padding: EdgeInsets.only(top: 70),
+              padding: EdgeInsets.only(top: 5),
             ),
             Container(
               width: screenSize.width * 0.4,
@@ -65,15 +74,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
+                    Navigator.of(context).pushNamed('/login');
                   },
                   child: Text(
                     'Login >',
                     style: TextStyle(
-                        color: kBgColorPrimary,
+                        color: Color(0xFFFBC02D),
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
@@ -101,10 +107,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 color: Colors.transparent,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RegisterScreen()),
-                  );
+                  Navigator.of(context).pushNamed('/register');
                 },
                 child: Text(
                   'Buat akun >',
