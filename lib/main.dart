@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/welcome_screen.dart';
+import 'package:smart_home/routes.dart';
+import 'package:smart_home/screens/about/about_screen.dart';
+import 'package:smart_home/theme.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(SmartHome());
 
-class MyApp extends StatelessWidget {
+class SmartHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Smart Home',
-      theme: ThemeData(fontFamily: 'Poppins'),
-      home: WelcomeScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Smart Home',
+        theme: theme(),
+        initialRoute: AboutScreen.routeName,
+        routes: routes);
   }
 }

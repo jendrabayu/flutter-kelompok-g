@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/widgets/AuthButton.dart';
-import 'package:smart_home/ui/widgets/AuthTextField.dart';
+import 'package:smart_home/components/AuthButton.dart';
+import 'package:smart_home/components/AuthTextField.dart';
+import 'package:smart_home/constans.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: kBackroundColor),
+            decoration: BoxDecoration(color: kBgColorPrimary),
           ),
           SingleChildScrollView(
             child: Expanded(

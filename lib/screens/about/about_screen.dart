@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/widgets/AboutCard.dart';
+import 'package:smart_home/constans.dart';
+import 'package:smart_home/screens/about/components/AboutCard.dart';
 
 class AboutScreen extends StatelessWidget {
+  static String routeName = '/about';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +27,7 @@ class _AboutScreenState extends StatelessWidget {
           Container(
             height: size.height * .35,
             decoration: BoxDecoration(
-              color: kBackroundColor,
+              color: kBgColorPrimary,
             ),
           ),
           SafeArea(

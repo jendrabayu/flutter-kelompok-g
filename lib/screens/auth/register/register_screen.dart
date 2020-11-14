@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/screens/success/register_success_screen.dart';
-import 'package:smart_home/ui/widgets/AuthTextField.dart';
+import 'package:smart_home/components/AuthTextField.dart';
+import 'package:smart_home/constans.dart';
+import 'package:smart_home/screens/success/register_success_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: kBackroundColor),
+            decoration: BoxDecoration(color: kBgColorPrimary),
           ),
           SingleChildScrollView(
             child: Expanded(
@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: Text(
                                 'Buat Akun >',
                                 style: TextStyle(
-                                    color: kBackroundColor,
+                                    color: kBgColorPrimary,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold),
                               ),

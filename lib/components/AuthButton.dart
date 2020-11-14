@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
+import 'package:smart_home/constans.dart';
 
 class AuthButton extends StatelessWidget {
   final String btnTitle;
@@ -18,7 +18,7 @@ class AuthButton extends StatelessWidget {
         child: Text(
           this.btnTitle,
           style: TextStyle(
-              color: kBackroundColor,
+              color: kBgColorPrimary,
               fontSize: 25,
               fontWeight: FontWeight.bold),
         ),

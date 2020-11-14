@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
+import 'package:smart_home/constans.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   @override
@@ -137,7 +137,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   child: Text(
                     'Reset password',
                     style: TextStyle(
-                        color: kBackroundColor,
+                        color: kBgColorPrimary,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),

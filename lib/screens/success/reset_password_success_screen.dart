@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/constants/constant.dart';
-import 'package:smart_home/ui/screens/auth/login_screen.dart';
+import 'package:smart_home/constans.dart';
+import 'package:smart_home/screens/auth/login/login_screen.dart';
 
 class ResetPasswordSuccessScreen extends StatefulWidget {
   @override
@@ -99,7 +99,7 @@ class _ResetPasswordSuccessScreenState
                   child: Text(
                     '< Login',
                     style: TextStyle(
-                        color: kBackroundColor,
+                        color: kBgColorPrimary,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
