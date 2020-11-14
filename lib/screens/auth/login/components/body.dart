@@ -74,7 +74,9 @@ class _BodyState extends State<Body> {
                         height: SizeConfig.screenWidth * 0.12,
                         child: ButtonAuth(
                           btnTitle: 'Login',
-                          press: () {},
+                          press: () {
+                            Navigator.of(context).pushNamed('/about');
+                          },
                         ),
                       ),
                       SizedBox(

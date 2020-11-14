@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/components/textfield_auth.dart';
-import 'package:smart_home/screens/register_success/register_success_screen.dart';
 import 'package:smart_home/size_config.dart';
 
 import '../../../../constans.dart';

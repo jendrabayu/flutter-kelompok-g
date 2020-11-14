@@ -57,17 +57,17 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 10),
                 children: <Widget>[
                   TeamCard(
-                    photoSrc: 'assets/images/agus.png',
+                    photoSrc: 'assets/images/teams/agus.png',
                     nama: 'Agus Sepriyandiansah',
                     nim: '182410102081',
                   ),
                   TeamCard(
-                    photoSrc: 'assets/images/jendra.png',
+                    photoSrc: 'assets/images/teams/jendra.png',
                     nama: 'Jendra Bayu Nugraha',
                     nim: '182410102043',
                   ),
                   TeamCard(
-                    photoSrc: 'assets/images/toni.png',
+                    photoSrc: 'assets/images/teams/toni.png',
                     nama: 'M. Fathony Ramdhan',
                     nim: '182410102019',
                   ),
