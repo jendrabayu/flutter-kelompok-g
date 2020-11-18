@@ -75,6 +75,7 @@ class _BodyState extends State<Body> {
                         TextFormField(
                           controller: password,
                           keyboardType: TextInputType.text,
+                          obscureText: true,
                           decoration:
                               buildInputDecoration("Password", 'Masukkan'),
                           validator: (String value) {
