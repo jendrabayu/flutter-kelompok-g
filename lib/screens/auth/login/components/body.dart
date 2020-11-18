@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/components/button_auth.dart';
 import 'package:smart_home/components/textfield_auth.dart';
+import 'package:smart_home/screens/auth/login/components/input_design.dart';
 import 'package:smart_home/size_config.dart';
 import '../../../../constans.dart';
 
@@ -10,6 +11,11 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  String email;
+  TextEditingController password = TextEditingController();
+
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -40,76 +46,109 @@ class _BodyState extends State<Body> {
                         fontWeight: FontWeight.bold)),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
-                  child: Column(
-                    children: <Widget>[
-                      TextFieldAuth(
-                        txtLabel: 'Email',
-                        txtHint: 'your username@gmail.com',
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextFieldAuth(
-                        obscureTextStatus: true,
-                        txtLabel: 'Password',
-                        txtHint: 'Enter your password',
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      FlatButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/password-reset');
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              'Lupa password?',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: SizeConfig.screenWidth * 0.4,
-                        height: SizeConfig.screenWidth * 0.12,
-                        child: ButtonAuth(
-                          btnTitle: 'Login',
-                          press: () {
-                            Navigator.of(context).pushNamed('/about');
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: buildInputDecoration(
+                              'Email', 'Masukkan alamat email'),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please a Enter';
+                            }
+                            if (!RegExp(
+                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(value)) {
+                              return 'Please a valid Email';
+                            }
+                            return null;
+                          },
+                          onSaved: (String value) {
+                            email = value;
                           },
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          controller: password,
+                          keyboardType: TextInputType.text,
+                          decoration:
+                              buildInputDecoration("Password", 'Masukkan'),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please a Enter Password';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/password-reset');
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text('Belum Punya aku?',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15)),
-                              FlatButton(
-                                onPressed: () {
-                                  Navigator.of(context).pushNamed('/register');
-                                },
-                                child: Text(' Buat akun>',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold)),
+                              Text(
+                                'Lupa password?',
+                                style: TextStyle(color: Colors.white),
                               ),
                             ],
                           ),
-                        ],
-                      )
-                    ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: SizeConfig.screenWidth * 0.4,
+                          height: SizeConfig.screenWidth * 0.12,
+                          child: ButtonAuth(
+                            btnTitle: 'Login',
+                            press: () {
+                              if (_formkey.currentState.validate()) {
+                                print("successful");
+                                return Navigator.of(context)
+                                    .pushNamed('/about');
+                                ;
+                              } else {
+                                print("UnSuccessfull");
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('Belum Punya aku?',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15)),
+                                FlatButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/register');
+                                  },
+                                  child: Text(' Buat akun>',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold)),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
