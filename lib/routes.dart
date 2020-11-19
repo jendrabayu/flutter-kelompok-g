@@ -4,6 +4,7 @@ import 'package:smart_home/screens/auth/password-reset/password_reset_screen.dar
 import 'package:smart_home/screens/auth/register/register_screen.dart';
 import 'package:smart_home/screens/password-reset-success/password_reset_success_screen.dart';
 import 'package:smart_home/screens/register-success/register_success_screen.dart';
+import 'package:smart_home/screens/splash/splash_screen.dart';
 import 'package:smart_home/screens/welcome/welcome_screen.dart';
 import 'package:smart_home/screens/about/about_screen.dart';
 
@@ -13,6 +14,7 @@ import 'package:smart_home/screens/about/about_screen.dart';
 */
 
 final Map<String, WidgetBuilder> routes = {
+  SplashScreen.routeName: (ctx) => SplashScreen(),
   WelcomeScreen.routeName: (ctx) => WelcomeScreen(),
   AboutScreen.routeName: (ctx) => AboutScreen(),
   LoginScreen.routeName: (ctx) => LoginScreen(),

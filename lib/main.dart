@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/routes.dart';
+import 'package:smart_home/screens/splash/splash_screen.dart';
 import 'package:smart_home/screens/welcome/welcome_screen.dart';
 import 'package:smart_home/theme.dart';
 
@@ -12,7 +13,7 @@ class SmartHome extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Smart Home',
         theme: theme(),
-        initialRoute: WelcomeScreen.routeName,
+        initialRoute: SplashScreen.routeName,
         routes: routes);
   }
 }

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/constans.dart';
 import 'dart:async';
 
-class SplashScreenPage extends StatefulWidget {
+import 'package:smart_home/screens/welcome/welcome_screen.dart';
+
+class SplashScreen extends StatefulWidget {
+  static String routeName = '/splash';
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenPageState extends State<SplashScreenPage> {
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -19,7 +22,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return HomePage();
+          return WelcomeScreen();
         }),
       );
     });
@@ -28,11 +31,10 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFCC24),
+      backgroundColor: kBgColorPrimary,
       body: Center(
-
-        child: Image.asset(
-            "assets/images/icon-logo.png"
+        child: Image(
+          image: kLogo,
         ),
       ),
     );
