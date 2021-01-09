@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/constans.dart';
-import 'package:smart_home/screens/about/components/body.dart';
+import 'package:smart_home/screens/camera/components/body.dart';
+import 'package:smart_home/size_config.dart';
 
-class AboutScreen extends StatelessWidget {
-  static String routeName = '/about';
+import '../../constans.dart';
+
+class CameraScreen extends StatelessWidget {
+  static String routeName = '/camera';
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Our Team',
+          'Camera',
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         backgroundColor: kBgColorPrimary,

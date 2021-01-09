@@ -53,7 +53,7 @@ class _LoginFormState extends State<LoginForm> {
               press: () {
                 if (_formKey.currentState.validate()) {
                   print("successful");
-                  return Navigator.of(context).pushNamed('/about');
+                  return Navigator.of(context).pushReplacementNamed('/home');
                 } else {
                   print("UnSuccessfull");
                 }
