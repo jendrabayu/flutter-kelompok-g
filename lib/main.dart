@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/routes.dart';
 import 'package:smart_home/screens/splash/splash_screen.dart';
-import 'package:smart_home/screens/welcome/welcome_screen.dart';
 import 'package:smart_home/theme.dart';
 
 void main() => runApp(SmartHome());

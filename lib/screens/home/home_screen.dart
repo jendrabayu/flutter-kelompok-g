@@ -35,8 +35,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: SizeConfig.screenWidth,
-                child: buildMenuButton('Take a picture', Icon(Icons.camera_alt),
-                    () {
+                child: buildMenuButton('Camera', Icon(Icons.camera_alt), () {
                   return Navigator.of(context).pushNamed('/camera');
                 }),
               ),
