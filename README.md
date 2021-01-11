@@ -1,8 +1,22 @@
 # Smart Home
 
-A new Flutter project.
+## Implementasi Materi dari RPS
+- [x] Navigation
+- [x] Assets
+- [x] Statefull widget
+- [x] Custom widget
+- [x] List view
+- [x] Input field
+- [ ] Image from url
+- [ ] State management (provider, bloc)
+- [ ] http (http request get from api)
+- [x] Camera + Storage (store image to external storage)
+- [ ] Animation
+- [ ] Maps
+- [ ] Gps
 
-## Statefull Widget dan List View
-- Form validation untuk screen Login, Register, Lupa Password [https://flutter.dev/docs/cookbook/forms/validation]
-- Listview our team untuk screen About
+## Anggota Kelompok
+1. M. FATHONY RAMDHAN   182410102019
+2. JENDRA BAYU NUGRAHA  182410102043
+3. AGUS SEPRIYANDIANSAH 182410102081
 
