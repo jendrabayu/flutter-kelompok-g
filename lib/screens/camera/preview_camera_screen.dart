@@ -24,6 +24,7 @@ class _PreviewCameraScreenState extends State<PreviewCameraScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBgColorPrimary,
+        elevation: 0,
       ),
       body: Container(
         child: Column(

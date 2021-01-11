@@ -3,7 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:smart_home/constans.dart';
 import 'package:smart_home/screens/camera/preview_camera_screen.dart';
+import 'package:ext_storage/ext_storage.dart';
 
 class CameraScreen extends StatefulWidget {
   static String routeName = '/camera';
@@ -11,6 +14,15 @@ class CameraScreen extends StatefulWidget {
   @override
   _CameraScreenState createState() => _CameraScreenState();
 }
+
+/// References
+/// * Camera: https://dev.to/samuelezedi/building-a-camera-app-with-flutter-52p5
+/// * External Storage: https://pub.dev/packages/ext_storage
+/// * Storage Permission: https://stackoverflow.com/questions/50561737/getting-permission-to-the-external-storage-file-provider-plugin
+/// * Share File: https://pub.dev/packages/esys_flutter_share
+
+/// Author
+/// * Jendra Bayu Nugraha 182410102043
 
 class _CameraScreenState extends State {
   CameraController controller;
@@ -55,8 +67,8 @@ class _CameraScreenState extends State {
 
     try {
       await controller.initialize();
-    } on CameraException catch (e) {
-      print('Error:${e.code}\nError message : ${e.description}');
+    } on CameraException catch (err) {
+      print('Error:${err.code}\nError message : ${err.description}');
     }
     if (mounted) {
       setState(() {});
@@ -101,12 +113,13 @@ class _CameraScreenState extends State {
 
   Widget cameraPreviewWidget() {
     if (controller == null || !controller.value.isInitialized) {
-      return const Text(
-        'Loading',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w900,
+      return Center(
+        child: Container(
+          width: 50,
+          height: 50,
+          child: CircularProgressIndicator(
+            backgroundColor: kBgColorPrimary,
+          ),
         ),
       );
     }
@@ -152,7 +165,13 @@ class _CameraScreenState extends State {
       child: Align(
         alignment: Alignment.centerLeft,
         child: FlatButton.icon(
-          onPressed: _onSwitchCamera,
+          onPressed: () {
+            selectedCameraIndex = selectedCameraIndex < cameras.length - 1
+                ? selectedCameraIndex + 1
+                : 0;
+            CameraDescription selectedCamera = cameras[selectedCameraIndex];
+            initCameraController(selectedCamera);
+          },
           icon: Icon(
             getCameraLensIcon(lensDirection),
             color: Colors.white,
@@ -182,26 +201,35 @@ class _CameraScreenState extends State {
 
   void onCapturePressed(context) async {
     try {
-      final path =
-          join((await getTemporaryDirectory()).path, '${DateTime.now()}.jpg');
-      await controller.takePicture().then((value) => value.saveTo(path));
+      //path untuk directory project
+      // final path =
+      //     join((await getTemporaryDirectory()).path, '${DateTime.now()}.jpg');
+      // await controller.takePicture().then((value) => value.saveTo(path));
+
+      //path untuk external storage ke directory "pictures"
+      final extPath = join(
+          await ExtStorage.getExternalStoragePublicDirectory(
+              ExtStorage.DIRECTORY_PICTURES),
+          '${DateTime.now()}.jpg');
+
+      if (!(await Permission.storage.status).isGranted) {
+        var status = await Permission.storage.request();
+        if (!status.isGranted) {
+          return null;
+        }
+      }
+
+      await controller.takePicture().then((value) => value.saveTo(extPath));
 
       Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => PreviewCameraScreen(
-                  imgPath: path,
+                  imgPath: extPath,
                 )),
       );
-    } catch (e) {
-      print('Error:${e.code}\nError message : ${e.description}');
+    } catch (err) {
+      print('Error:${err.code}\nError message : ${err.description}');
     }
-  }
-
-  void _onSwitchCamera() {
-    selectedCameraIndex =
-        selectedCameraIndex < cameras.length - 1 ? selectedCameraIndex + 1 : 0;
-    CameraDescription selectedCamera = cameras[selectedCameraIndex];
-    initCameraController(selectedCamera);
   }
 }
