@@ -26,8 +26,18 @@ class HomeScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(
                 width: SizeConfig.screenWidth,
-                child: _buildMenuButton('Our team', Icon(Icons.people_alt), () {
+                child: _buildMenuButton(
+                    'Our team', Icon(Icons.people_alt_outlined), () {
                   return Navigator.of(context).pushNamed('/our_team');
+                }),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: SizeConfig.screenWidth,
+                child: _buildMenuButton('Users', Icon(Icons.people_alt), () {
+                  return Navigator.of(context).pushNamed('/user');
                 }),
               ),
               SizedBox(
