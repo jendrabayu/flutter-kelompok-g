@@ -13,12 +13,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    startSplashScreen();
+    _startSplashScreen();
   }
 
-  startSplashScreen() async {
-    var duration = const Duration(seconds: 5);
-    return Timer(duration, () {
+  _startSplashScreen() async {
+    return Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
           return WelcomeScreen();
@@ -32,8 +31,25 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: kBgColorPrimary,
       body: Center(
-        child: Image(
-          image: kLogo,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(
+              width: 120,
+              image: kLogo,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Smart Home',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 2),
+            )
+          ],
         ),
       ),
     );
