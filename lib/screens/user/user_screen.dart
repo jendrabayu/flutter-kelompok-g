@@ -50,7 +50,7 @@ class _UserScreenState extends State<UserScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBgColorPrimary,
-        title: Text("Users"),
+        title: Text("Daftar Teknisi"),
       ),
       body: getBody(),
     );

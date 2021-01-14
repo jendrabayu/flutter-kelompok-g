@@ -24,40 +24,33 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: _buildMenuButton(
-                    'Our team', Icon(Icons.people_alt_outlined), () {
-                  return Navigator.of(context).pushNamed('/our_team');
-                }),
-              ),
+              _buildButton('Info Pemadaman', () {
+                return Navigator.of(context).pushNamed('/pemadaman');
+              }),
               SizedBox(
                 height: 10,
               ),
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: _buildMenuButton('Users', Icon(Icons.people_alt), () {
-                  return Navigator.of(context).pushNamed('/user');
-                }),
-              ),
+              _buildButton('Tim Developer', () {
+                return Navigator.of(context).pushNamed('/our_team');
+              }),
               SizedBox(
                 height: 10,
               ),
-              SizedBox(
-                width: SizeConfig.screenWidth,
-                child: _buildMenuButton('Camera', Icon(Icons.camera_alt), () {
-                  return Navigator.of(context).pushNamed('/camera');
-                }),
-              ),
+              _buildButton('Daftar Teknisi', () {
+                return Navigator.of(context).pushNamed('/user');
+              }),
               SizedBox(
                 height: 10,
               ),
+              _buildButton('Kamera', () {
+                return Navigator.of(context).pushNamed('/camera');
+              }),
               SizedBox(
-                width: SizeConfig.screenWidth,
-                child: _buildMenuButton('Logout', Icon(Icons.logout), () {
-                  return Navigator.of(context).pushReplacementNamed('/welcome');
-                }),
+                height: 10,
               ),
+              _buildButton('Keluar', () {
+                return Navigator.of(context).pushNamed('/pemadaman');
+              }),
             ],
           ),
         ),
@@ -65,12 +58,39 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton _buildMenuButton(String title, Icon icon, Function onPressed) {
-    return RaisedButton.icon(
-      padding: EdgeInsets.all(10),
-      label: Text(title),
-      icon: icon,
-      onPressed: onPressed,
+  Widget _buildButton(String title, Function onTap) {
+    return Container(
+      height: 50.0,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Color(0xFFF05A22),
+              style: BorderStyle.solid,
+              width: 1.0,
+            ),
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Color(0xFFF05A22),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
