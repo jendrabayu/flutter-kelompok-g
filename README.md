@@ -7,9 +7,9 @@
 - [x] Custom widget
 - [x] List view
 - [x] Input field
-- [ ] Image from url
+- [x] Image from url
 - [ ] State management (provider, bloc)
-- [ ] http (http request get from api)
+- [x] http (http request get from api)
 - [x] Camera + Storage (store image to external storage)
 - [ ] Animation
 - [ ] Maps
