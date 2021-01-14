@@ -12,7 +12,7 @@ class SmartHome extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Smart Home',
         theme: theme(),
-        initialRoute: SplashScreen.routeName,
+        initialRoute: '/',
         routes: routes);
   }
 }

@@ -8,7 +8,7 @@ import 'package:smart_home/screens/password-reset-success/password_reset_success
 import 'package:smart_home/screens/register-success/register_success_screen.dart';
 import 'package:smart_home/screens/splash/splash_screen.dart';
 import 'package:smart_home/screens/welcome/welcome_screen.dart';
-import 'package:smart_home/screens/about/about_screen.dart';
+import 'package:smart_home/screens/our_team/our_team_screen.dart';
 
 /*
   Cara membuat routing dengan flutter
@@ -16,9 +16,9 @@ import 'package:smart_home/screens/about/about_screen.dart';
 */
 
 final Map<String, WidgetBuilder> routes = {
-  SplashScreen.routeName: (context) => SplashScreen(),
+  '/': (context) => SplashScreen(),
   WelcomeScreen.routeName: (context) => WelcomeScreen(),
-  AboutScreen.routeName: (context) => AboutScreen(),
+  OurTeamScreen.routeName: (context) => OurTeamScreen(),
   LoginScreen.routeName: (context) => LoginScreen(),
   RegisterScreen.routeName: (context) => RegisterScreen(),
   RegisterSuccessScreen.routeName: (context) => RegisterSuccessScreen(),

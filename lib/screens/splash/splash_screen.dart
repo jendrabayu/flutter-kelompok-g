@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:smart_home/screens/welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  static String routeName = '/splash';
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }

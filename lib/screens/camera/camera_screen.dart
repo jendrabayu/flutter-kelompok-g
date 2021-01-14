@@ -21,12 +21,9 @@ class CameraScreen extends StatefulWidget {
 /// * Storage Permission: https://stackoverflow.com/questions/50561737/getting-permission-to-the-external-storage-file-provider-plugin
 /// * Share File: https://pub.dev/packages/esys_flutter_share
 
-/// Author
-/// * Jendra Bayu Nugraha 182410102043
-
 class _CameraScreenState extends State {
-  CameraController controller;
   List cameras;
+  CameraController controller;
   int selectedCameraIndex;
   String imgPath;
 

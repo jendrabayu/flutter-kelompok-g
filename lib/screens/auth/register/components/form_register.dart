@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/components/button_auth.dart';
+import 'package:smart_home/widgets/button_auth.dart';
 import 'package:smart_home/screens/auth/register/components/input_design.dart';
 import '../../../../constans.dart';
 import '../../../../size_config.dart';

@@ -26,8 +26,8 @@ class HomeScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(
                 width: SizeConfig.screenWidth,
-                child: buildMenuButton('Our team', Icon(Icons.people_alt), () {
-                  return Navigator.of(context).pushNamed('/about');
+                child: _buildMenuButton('Our team', Icon(Icons.people_alt), () {
+                  return Navigator.of(context).pushNamed('/our_team');
                 }),
               ),
               SizedBox(
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: SizeConfig.screenWidth,
-                child: buildMenuButton('Camera', Icon(Icons.camera_alt), () {
+                child: _buildMenuButton('Camera', Icon(Icons.camera_alt), () {
                   return Navigator.of(context).pushNamed('/camera');
                 }),
               ),
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: SizeConfig.screenWidth,
-                child: buildMenuButton('Logout', Icon(Icons.logout), () {
+                child: _buildMenuButton('Logout', Icon(Icons.logout), () {
                   return Navigator.of(context).pushReplacementNamed('/welcome');
                 }),
               ),
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton buildMenuButton(String title, Icon icon, Function onPressed) {
+  RaisedButton _buildMenuButton(String title, Icon icon, Function onPressed) {
     return RaisedButton.icon(
       padding: EdgeInsets.all(10),
       label: Text(title),
