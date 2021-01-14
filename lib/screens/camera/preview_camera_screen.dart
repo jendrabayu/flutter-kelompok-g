@@ -10,9 +10,9 @@ import 'package:path/path.dart';
 import '../../constans.dart';
 
 class PreviewCameraScreen extends StatefulWidget {
-  final String imgPath;
+  final String imagePath;
 
-  PreviewCameraScreen({this.imgPath});
+  PreviewCameraScreen({this.imagePath});
 
   @override
   _PreviewCameraScreenState createState() => _PreviewCameraScreenState();
@@ -33,7 +33,7 @@ class _PreviewCameraScreenState extends State<PreviewCameraScreen> {
             Expanded(
               flex: 2,
               child: Image.file(
-                File(widget.imgPath),
+                File(widget.imagePath),
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,11 +49,13 @@ class _PreviewCameraScreenState extends State<PreviewCameraScreen> {
                       Icons.share,
                       color: Colors.white,
                     ),
-                    onPressed: () {
-                      getBytesFromFile().then((bytes) {
-                        Share.file('Share via', basename(widget.imgPath),
-                            bytes.buffer.asUint8List(), 'image/path');
-                      });
+                    onPressed: () async {
+                      //https://pub.dev/packages/esys_flutter_share
+                      final Uint8List bytes =
+                          File(widget.imagePath).readAsBytesSync();
+                      ByteData.view(bytes.buffer);
+                      await Share.file('Share via', basename(widget.imagePath),
+                          bytes.buffer.asUint8List(), 'image/path');
                     },
                   ),
                 ),
@@ -63,10 +65,5 @@ class _PreviewCameraScreenState extends State<PreviewCameraScreen> {
         ),
       ),
     );
-  }
-
-  Future<ByteData> getBytesFromFile() async {
-    Uint8List bytes = File(widget.imgPath).readAsBytesSync();
-    return ByteData.view(bytes.buffer);
   }
 }

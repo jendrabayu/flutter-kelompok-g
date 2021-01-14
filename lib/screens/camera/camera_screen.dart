@@ -15,12 +15,6 @@ class CameraScreen extends StatefulWidget {
   _CameraScreenState createState() => _CameraScreenState();
 }
 
-/// References
-/// * Camera: https://dev.to/samuelezedi/building-a-camera-app-with-flutter-52p5
-/// * External Storage: https://pub.dev/packages/ext_storage
-/// * Storage Permission: https://stackoverflow.com/questions/50561737/getting-permission-to-the-external-storage-file-provider-plugin
-/// * Share File: https://pub.dev/packages/esys_flutter_share
-
 class _CameraScreenState extends State {
   List cameras;
   CameraController controller;
@@ -30,23 +24,64 @@ class _CameraScreenState extends State {
   @override
   void initState() {
     super.initState();
+
+    //Mendapatkan daftar kamera yang tersedia
     availableCameras().then((value) {
       cameras = value;
-
       if (cameras.length > 0) {
         setState(() {
+          //Default kamera adalah kamera belakang index ke-0
           selectedCameraIndex = 0;
         });
-        initCameraController(cameras[selectedCameraIndex]).then((void v) {});
+        _initializeCameraController(cameras[selectedCameraIndex])
+            .then((void v) {});
       } else {
-        print('No camera available');
+        print('Tidak ada kamera yang tersedia');
       }
     }).catchError((err) {
       print('Error :${err.code}Error message : ${err.message}');
     });
   }
 
-  Future initCameraController(CameraDescription cameraDescription) async {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: _buildCameraPreview(),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 120,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(15),
+                  color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      _buildCameraToggleRow(),
+                      _buildCameraControl(context),
+                      Spacer()
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  //Inisialisasi camera controller
+  Future _initializeCameraController(
+      CameraDescription cameraDescription) async {
     if (controller != null) {
       await controller.dispose();
     }
@@ -72,43 +107,7 @@ class _CameraScreenState extends State {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: cameraPreviewWidget(),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 120,
-                  width: double.infinity,
-                  padding: EdgeInsets.all(15),
-                  color: Colors.black,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      cameraToggleRowWidget(),
-                      cameraControlWidget(context),
-                      Spacer()
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget cameraPreviewWidget() {
+  Widget _buildCameraPreview() {
     if (controller == null || !controller.value.isInitialized) {
       return Center(
         child: Container(
@@ -127,7 +126,7 @@ class _CameraScreenState extends State {
     );
   }
 
-  Widget cameraControlWidget(context) {
+  Widget _buildCameraControl(context) {
     return Expanded(
       child: Align(
         alignment: Alignment.center,
@@ -141,8 +140,41 @@ class _CameraScreenState extends State {
                 color: Colors.black,
               ),
               backgroundColor: Colors.white,
-              onPressed: () {
-                onCapturePressed(context);
+              onPressed: () async {
+                try {
+                  //path untuk directory project
+                  // final path =
+                  //     join((await getTemporaryDirectory()).path, '${DateTime.now()}.jpg');
+                  // await controller.takePicture().then((value) => value.saveTo(path));
+
+                  //path untuk external storage ke directory "pictures"
+                  final extPath = join(
+                      await ExtStorage.getExternalStoragePublicDirectory(
+                          ExtStorage.DIRECTORY_PICTURES),
+                      '${DateTime.now()}.jpg');
+
+                  if (!(await Permission.storage.status).isGranted) {
+                    var status = await Permission.storage.request();
+                    if (!status.isGranted) {
+                      return null;
+                    }
+                  }
+
+                  await controller
+                      .takePicture()
+                      .then((value) => value.saveTo(extPath));
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PreviewCameraScreen(
+                              imagePath: extPath,
+                            )),
+                  );
+                } catch (err) {
+                  print(
+                      'Error:${err.code}\nError message : ${err.description}');
+                }
               },
             )
           ],
@@ -151,7 +183,7 @@ class _CameraScreenState extends State {
     );
   }
 
-  Widget cameraToggleRowWidget() {
+  Widget _buildCameraToggleRow() {
     if (cameras == null || cameras.isEmpty) {
       return Spacer();
     }
@@ -167,10 +199,10 @@ class _CameraScreenState extends State {
                 ? selectedCameraIndex + 1
                 : 0;
             CameraDescription selectedCamera = cameras[selectedCameraIndex];
-            initCameraController(selectedCamera);
+            _initializeCameraController(selectedCamera);
           },
           icon: Icon(
-            getCameraLensIcon(lensDirection),
+            _getCameraIcon(lensDirection),
             color: Colors.white,
             size: 24,
           ),
@@ -183,7 +215,7 @@ class _CameraScreenState extends State {
     );
   }
 
-  IconData getCameraLensIcon(CameraLensDirection direction) {
+  IconData _getCameraIcon(CameraLensDirection direction) {
     switch (direction) {
       case CameraLensDirection.back:
         return CupertinoIcons.switch_camera;
@@ -193,40 +225,6 @@ class _CameraScreenState extends State {
         return Icons.camera;
       default:
         return Icons.device_unknown;
-    }
-  }
-
-  void onCapturePressed(context) async {
-    try {
-      //path untuk directory project
-      // final path =
-      //     join((await getTemporaryDirectory()).path, '${DateTime.now()}.jpg');
-      // await controller.takePicture().then((value) => value.saveTo(path));
-
-      //path untuk external storage ke directory "pictures"
-      final extPath = join(
-          await ExtStorage.getExternalStoragePublicDirectory(
-              ExtStorage.DIRECTORY_PICTURES),
-          '${DateTime.now()}.jpg');
-
-      if (!(await Permission.storage.status).isGranted) {
-        var status = await Permission.storage.request();
-        if (!status.isGranted) {
-          return null;
-        }
-      }
-
-      await controller.takePicture().then((value) => value.saveTo(extPath));
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => PreviewCameraScreen(
-                  imgPath: extPath,
-                )),
-      );
-    } catch (err) {
-      print('Error:${err.code}\nError message : ${err.description}');
     }
   }
 }

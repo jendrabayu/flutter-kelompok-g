@@ -5,7 +5,7 @@ import '../../size_config.dart';
 class OurTeamScreen extends StatelessWidget {
   static String routeName = '/our_team';
 
-  final List teams = [
+  final List _teams = [
     {
       'name': 'M. Fathony Ramdhan',
       'nim': '182410102019',
@@ -84,11 +84,11 @@ class OurTeamScreen extends StatelessWidget {
                     child: ListView.builder(
                   padding: EdgeInsets.only(bottom: 10),
                   itemBuilder: (context, index) {
-                    Map person = teams[index];
+                    Map person = _teams[index];
                     return _buildCardTeam(
                         person['name'], person['nim'], person['photo']);
                   },
-                  itemCount: teams.length,
+                  itemCount: _teams.length,
                 ))
               ],
             ),
