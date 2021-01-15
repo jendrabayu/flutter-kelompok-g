@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/constans.dart';
+import 'package:smart_home/screens/welcome/welcome_screen.dart';
 import 'package:smart_home/size_config.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -49,7 +50,11 @@ class HomeScreen extends StatelessWidget {
                 height: 10,
               ),
               _buildButton('Keluar', () {
-                return Navigator.of(context).pushNamed('/pemadaman');
+                return Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => WelcomeScreen()));
+                ;
               }),
             ],
           ),
