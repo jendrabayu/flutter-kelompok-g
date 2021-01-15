@@ -10,59 +10,115 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kBgColorPrimary,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Smart Home',
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
-      body: Center(
-        child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(25)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildButton('Info Pemadaman', () {
-                return Navigator.of(context).pushNamed('/pemadaman');
-              }),
-              SizedBox(
-                height: 10,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              height: SizeConfig.screenHeight * .35,
+              decoration: BoxDecoration(
+                color: kBgColorPrimary,
               ),
-              _buildButton('Tim Developer', () {
-                return Navigator.of(context).pushNamed('/our_team');
-              }),
-              SizedBox(
-                height: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.all(
+                getProportionateScreenWidth(25),
               ),
-              _buildButton('Daftar Teknisi', () {
-                return Navigator.of(context).pushNamed('/user');
-              }),
-              SizedBox(
-                height: 10,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    height: 70,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Image(image: kLogo),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'SDGs 7',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Afforfable and Clean Energy',
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.normal),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    elevation: 3,
+                    child: Container(
+                      padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+                      child: Column(
+                        children: <Widget>[
+                          _buildButton('Info Pemadaman', () {
+                            return Navigator.of(context)
+                                .pushNamed('/pemadaman');
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _buildButton('Pengaduan / Saran', () {
+                            return Navigator.of(context)
+                                .pushNamed('/pengaduan');
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _buildButton('Daftar Teknisi', () {
+                            return Navigator.of(context).pushNamed('/user');
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _buildButton('Tim Developer', () {
+                            return Navigator.of(context).pushNamed('/our_team');
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _buildButton('Kamera', () {
+                            return Navigator.of(context).pushNamed('/camera');
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _buildButton('Keluar', () {
+                            return Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        WelcomeScreen()));
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Text(
+                      'version 1.0.0',
+                      style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+                    ),
+                  )
+                ],
               ),
-              _buildButton('Kamera', () {
-                return Navigator.of(context).pushNamed('/camera');
-              }),
-              SizedBox(
-                height: 10,
-              ),
-              _buildButton('Pengaduan / Saran', () {
-                return Navigator.of(context).pushNamed('/pengaduan');
-              }),
-              SizedBox(
-                height: 10,
-              ),
-              _buildButton('Keluar', () {
-                return Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => WelcomeScreen()));
-              }),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
