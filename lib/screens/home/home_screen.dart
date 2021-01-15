@@ -48,6 +48,12 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              _buildButton('Pengaduan / Saran', () {
+                return Navigator.of(context).pushNamed('/pengaduan');
+              }),
+              SizedBox(
+                height: 10,
+              ),
               _buildButton('Keluar', () {
                 return Navigator.of(context).pushNamed('/pemadaman');
               }),
